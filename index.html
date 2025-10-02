@@ -9,6 +9,7 @@
         margin: 0;
         overflow: hidden;
       }
+
       #switchBtn {
         position: absolute;
         top: 20px;
@@ -16,52 +17,44 @@
         z-index: 10;
         padding: 10px 20px;
         background: yellow;
-		border: 5px solid black;
+        border: 5px solid black;
         font-size: 16px;
+        font-weight: bold; /* tekst pogrubiony */
         cursor: pointer;
       }
     </style>
   </head>
   <body>
-    <button id="switchBtn"><b>POKAŻ WERSJĘ HISTORYCZNĄ</b></button>
+    <button id="switchBtn">POKAŻ WERSJĘ HISTORYCZNĄ</button>
 
-    <button id="switchBtn"><b>POKAŻ WERSJĘ HISTORYCZNĄ</b></button>
+    <a-scene>
+      <a-assets>
+        <img id="now" src="panorama_now.jpg" />
+        <img id="then" src="panorama_then.jpg" />
+      </a-assets>
 
-<a-scene>
-  <a-assets>
-    <img id="now" src="panorama_now.jpg" />
-    <img id="then" src="panorama_then.jpg" />
-  </a-assets>
+      <a-sky id="sky-now" src="#now" rotation="0 -90 0" visible="true"></a-sky>
+      <a-sky id="sky-then" src="#then" rotation="0 -90 0" visible="false"></a-sky>
 
-  <a-sky id="sky-now" src="#now" rotation="0 -90 0" visible="true"></a-sky>
-  <a-sky id="sky-then" src="#then" rotation="0 -90 0" visible="false"></a-sky>
+      <a-camera wasd-controls-enabled="false" look-controls="pointerLockEnabled: true"></a-camera>
+    </a-scene>
 
-  <a-camera wasd-controls-enabled="false" look-controls="pointerLockEnabled: true"></a-camera>
-</a-scene>
+    <script>
+      const skyNow = document.getElementById("sky-now");
+      const skyThen = document.getElementById("sky-then");
+      const btn = document.getElementById("switchBtn");
+      let showingNow = true;
 
-<script>
-  const skyNow = document.getElementById("sky-now");
-  const skyThen = document.getElementById("sky-then");
-  const btn = document.getElementById("switchBtn");
-  let showingNow = true;
+      btn.addEventListener("click", () => {
+        showingNow = !showingNow;
+        skyNow.setAttribute("visible", showingNow);
+        skyThen.setAttribute("visible", !showingNow);
 
-  btn.addEventListener("click", () => {
-    showingNow = !showingNow;
-    skyNow.setAttribute("visible", showingNow);
-    skyThen.setAttribute("visible", !showingNow);
-    btn.innerHTML = showingNow
-      ? "<b>POKAŻ WERSJĘ HISTORYCZNĄ</b>"
-      : "<b>POKAŻ WERSJĘ WSPÓŁCZESNĄ</b>";
-  });
-</script>
+        // ustawienie tekstu przycisku
+        btn.textContent = showingNow
+          ? "POKAŻ WERSJĘ HISTORYCZNĄ"
+          : "POKAŻ WERSJĘ WSPÓŁCZESNĄ";
+      });
+    </script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
