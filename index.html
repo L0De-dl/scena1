@@ -16,7 +16,7 @@
         z-index: 10;
         padding: 10px 20px;
         background: yellow;
-		border: 8px solid black;
+		border: 5px solid black;
         font-size: 16px;
         cursor: pointer;
       }
@@ -51,8 +51,8 @@
         skyNow.setAttribute("visible", showingNow);
         skyThen.setAttribute("visible", !showingNow);
         btn.textContent = showingNow
-          ? "Pokaż wersję historyczną"
-          : "Pokaż wersję współczesną";
+          ? "<b>POKAŻ WERSJĘ HISTORYCZNĄ</b>"
+          : "<b>POKAŻ WERSJĘ WSPÓŁCZESNĄ</b>";
       });
 	  
 	  AFRAME.registerComponent('show-info-on-click', {
@@ -68,6 +68,7 @@ document.querySelector('#infoMarker').setAttribute('show-info-on-click', '');
     </script>
   </body>
 </html>
+
 
 
 
