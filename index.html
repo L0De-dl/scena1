@@ -19,13 +19,27 @@
         background: yellow;
         border: 5px solid black;
         font-size: 16px;
-        font-weight: bold; /* tekst pogrubiony */
+        font-weight: bold;
         cursor: pointer;
       }
+
+      #infoText {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 10;
+  padding: 8px 12px;
+  background: yellow;
+  font-size: 16px;
+  border: 5px solid black;
+  font-weight: bold;
+}
+
     </style>
   </head>
   <body>
     <button id="switchBtn">POKAŻ WERSJĘ HISTORYCZNĄ</button>
+    <div id="infoText">Aby wyjść z widoku 360, naciśnij ESCAPE</div>
 
     <a-scene>
       <a-assets>
@@ -58,3 +72,4 @@
     </script>
   </body>
 </html>
+
