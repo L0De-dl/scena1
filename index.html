@@ -8,6 +8,9 @@
       body {
         margin: 0;
         overflow: hidden;
+        display: flex;
+        justify-content: center; 
+        align-items: flex-start;
       }
 
       #switchBtn {
@@ -24,22 +27,21 @@
       }
 
       #infoText {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 10;
+  margin-top: 20px;
   padding: 8px 12px;
   background: yellow;
-  font-size: 16px;
   border: 5px solid black;
+  font-size: 16px;
   font-weight: bold;
+  z-index: 10;
+  position: absolute; 
 }
 
     </style>
   </head>
   <body>
     <button id="switchBtn">POKAŻ WERSJĘ HISTORYCZNĄ</button>
-    <div id="infoText">Aby wyjść z widoku 360, naciśnij ESCAPE</div>
+    <div id="infoText">ABY WYJŚĆ Z WIDOKU 360 NASCIŚNIJ ESCAPE</div>
 
     <a-scene>
       <a-assets>
@@ -72,5 +74,6 @@
     </script>
   </body>
 </html>
+
 
 
