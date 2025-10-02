@@ -51,8 +51,8 @@
         skyNow.setAttribute("visible", showingNow);
         skyThen.setAttribute("visible", !showingNow);
         btn.textContent = showingNow
-          ? "<b>POKAŻ WERSJĘ HISTORYCZNĄ</b>"
-          : "<b>POKAŻ WERSJĘ WSPÓŁCZESNĄ</b>";
+          ? <b>"POKAŻ WERSJĘ HISTORYCZNĄ"</b>
+          : <b>"POKAŻ WERSJĘ WSPÓŁCZESNĄ"</b>;
       });
 	  
 	  AFRAME.registerComponent('show-info-on-click', {
@@ -68,6 +68,7 @@ document.querySelector('#infoMarker').setAttribute('show-info-on-click', '');
     </script>
   </body>
 </html>
+
 
 
 
