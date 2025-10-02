@@ -35,8 +35,6 @@
       <a-sky id="sky-then" src="#then" rotation="0 -90 0" visible="false"></a-sky>
 
 
-</a-entity>
-
       <a-camera wasd-controls-enabled="false" look-controls="pointerLockEnabled: true"></a-camera>
     </a-scene>
 
@@ -50,10 +48,9 @@
         showingNow = !showingNow;
         skyNow.setAttribute("visible", showingNow);
         skyThen.setAttribute("visible", !showingNow);
-        btn.textContent = showingNow
-          ? <b>"POKAŻ WERSJĘ HISTORYCZNĄ"</b>
-          : <b>"POKAŻ WERSJĘ WSPÓŁCZESNĄ"</b>;
-      });
+btn.innerHTML = showingNow
+  ? "<b>POKAŻ WERSJĘ HISTORYCZNĄ</b>"
+  : "<b>POKAŻ WERSJĘ WSPÓŁCZESNĄ</b>";
 	  
 	  AFRAME.registerComponent('show-info-on-click', {
   init: function () {
@@ -68,6 +65,7 @@ document.querySelector('#infoMarker').setAttribute('show-info-on-click', '');
     </script>
   </body>
 </html>
+
 
 
 
