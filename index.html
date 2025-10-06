@@ -109,7 +109,16 @@
 
 <a-entity id="box" cursor-listener geometry="primitive: box" material="color: blue"></a-entity>
 
-
+      <a-circle 
+        class="clickable"
+        color="#FF0000" 
+        radius="0.5" 
+        position="0 1.6 -3"
+        text="value: POWRÓT; align: center; color: white; width: 2"
+        event-set__click="_event: click; _target: #dummy; visible: false"
+        onclick="window.location.href='https://l0de-dl.github.io/geoportal-historyczny'">
+      </a-circle>
+  
 </a-scene>
 
     
@@ -164,6 +173,7 @@
 
   </body>
 </html>
+
 
 
 
