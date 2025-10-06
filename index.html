@@ -1,137 +1,152 @@
 <!DOCTYPE html>
 <html lang="pl">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Porównanie panoram</title>
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Porównanie panoram</title>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
 
-    <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-        display: flex;
-        justify-content: center; 
-        align-items: flex-start;
-        font-family: Arial, sans-serif;
-      }
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        display: flex;
+        justify-content: center; 
+        align-items: flex-start;
+        font-family: Arial, sans-serif;
+      }
 
-      /* 🔸 Przycisk zmiany panoramy */
-      #switchBtn {
-        position: absolute;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 10;
-        padding: 10px 20px;
-        background: yellow;
-        border: 5px solid black;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-      }
+      /* 🔸 Przycisk zmiany panoramy */
+      #switchBtn {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        padding: 10px 20px;
+        background: yellow;
+        border: 5px solid black;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+      }
 
-      /* 🔸 Wspólny styl dla pól informacyjnych */
-      .infoBox {
-        position: absolute;
-        top: 20px;
-        z-index: 10;
-        padding: 8px 12px;
-        background: white;
-        border: 5px solid black;
-        font-size: 16px;
-        font-weight: bold;
-        max-width: 320px;
-      }
+      /* 🔸 Wspólny styl dla pól informacyjnych */
+      .infoBox {
+        position: absolute;
+        top: 20px;
+        z-index: 10;
+        padding: 8px 12px;
+        background: white;
+        border: 5px solid black;
+        font-size: 16px;
+        font-weight: bold;
+        max-width: 320px;
+      }
 
-      /* 🔸 Informacja po lewej (źródło) */
-      #sourceInfo {
-        left: 20px;
-        text-align: left;
-      }
+      /* 🔸 Informacja po lewej (źródło) */
+      #sourceInfo {
+        left: 20px;
+        text-align: left;
+      }
 
 
 
-      /* 🔸 Ekran ładowania */
-      #loader {
-        position: fixed;
-        inset: 0;
-        background: black;
-        color: yellow;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 26px;
-        font-weight: bold;
-        z-index: 9999;
-        letter-spacing: 2px;
-      }
+      /* 🔸 Ekran ładowania */
+      #loader {
+        position: fixed;
+        inset: 0;
+        background: black;
+        color: yellow;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 26px;
+        font-weight: bold;
+        z-index: 9999;
+        letter-spacing: 2px;
+      }
 
-      /* 🔸 Płynne znikanie loadera */
-      #loader.fade-out {
-        opacity: 0;
-        transition: opacity 1s ease;
-        pointer-events: none;
-      }
-    </style>
-  </head>
+      /* 🔸 Płynne znikanie loadera */
+      #loader.fade-out {
+        opacity: 0;
+        transition: opacity 1s ease;
+        pointer-events: none;
+      }
+    </style>
+  </head>
 
-  <body>
-    <!-- 🔹 Ekran ładowania -->
-    <div id="loader">ŁADOWANIE PANORAMY...</div>
+  <body>
+    <!-- 🔹 Ekran ładowania -->
+    <div id="loader">ŁADOWANIE PANORAMY...</div>
 
-    <!-- 🔹 Elementy informacyjne -->
-    <div id="sourceInfo" class="infoBox">
-      ŹRÓDŁO ZDJĘCIA HISTORYCZNEGO:<br>
-      ---<br>
-      fotopolska.eu
-    </div>
+    <!-- 🔹 Elementy informacyjne -->
+    <div id="sourceInfo" class="infoBox">
+      ŹRÓDŁO ZDJĘCIA HISTORYCZNEGO:<br>
+      ---<br>
+      fotopolska.eu
+    </div>
 
-    <!-- 🔹 Przycisk w centrum -->
-    <button id="switchBtn">POKAŻ WERSJĘ HISTORYCZNĄ</button>
+    <!-- 🔹 Przycisk w centrum -->
+    <button id="switchBtn">POKAŻ WERSJĘ HISTORYCZNĄ</button>
 
-    <!-- 🔹 Scena A-Frame -->
+    <!-- 🔹 Scena A-Frame -->
 <a-scene>
-  <a-assets timeout="5000">
-    <img id="now" src="panorama_now.jpg" />
-    <img id="then" src="panorama_then.jpg" />
-  </a-assets>
+  <a-assets timeout="5000">
+    <img id="now" src="panorama_now.jpg" />
+    <img id="then" src="panorama_then.jpg" />
+  </a-assets>
 
-  <a-sky id="sky-now" src="#now" rotation="0 -90 0" visible="true"></a-sky>
-  <a-sky id="sky-then" src="#then" rotation="0 -90 0" visible="false"></a-sky>
+  <a-sky id="sky-now" src="#now" rotation="0 -90 0" visible="true"></a-sky>
+  <a-sky id="sky-then" src="#then" rotation="0 -90 0" visible="false"></a-sky>
 
-<a-camera wasd-controls-enabled="false" look-controls>
-  <a-cursor fuse="false" color="white" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"></a-cursor>
+  <a-camera wasd-controls-enabled="false" look-controls>
+  <a-cursor 
+      fuse="true" 
+      fuse-timeout="500" 
+      color="white" 
+      geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02">
+  </a-cursor>
 </a-camera>
 
 
+  <!-- 🔹 Hotspot -->
+      <a-circle color="red" radius="1" position="-2.5 0 -5"
+                event-set__hide="_event: mouseenter; opacity: 0"
+                event-set__show="_event: mouseleave; opacity: 1"
+                event-set__enter="_event: mouseenter; _target: #Text3; visible: true"
+                event-set__leave="_event: mouseleave; _target: #Text3; visible: false"> 
+      <a-text id="Text3" value=" RzWiR " align="center" color="#FFF" visible="false" position="0 0.25 0.55"
+               material="color: #333"></a-text>
+      </a-circle>
+
 </a-scene>
 
-    
-    <script>
-      // 🔸 Ukrycie ekranu ładowania po wczytaniu sceny (z animacją)
-      const scene = document.querySelector("a-scene");
-      const loader = document.getElementById("loader");
+    
+    <script>
+      // 🔸 Ukrycie ekranu ładowania po wczytaniu sceny (z animacją)
+      const scene = document.querySelector("a-scene");
+      const loader = document.getElementById("loader");
 
-      scene.addEventListener("loaded", () => {
-        loader.classList.add("fade-out");
-        setTimeout(() => loader.remove(), 1000);
-      });
+      scene.addEventListener("loaded", () => {
+        loader.classList.add("fade-out");
+        setTimeout(() => loader.remove(), 1000);
+      });
 
-      // 🔸 Przełączanie panoram
-      const skyNow = document.getElementById("sky-now");
-      const skyThen = document.getElementById("sky-then");
-      const btn = document.getElementById("switchBtn");
-      let showingNow = true;
+      // 🔸 Przełączanie panoram
+      const skyNow = document.getElementById("sky-now");
+      const skyThen = document.getElementById("sky-then");
+      const btn = document.getElementById("switchBtn");
+      let showingNow = true;
 
-      btn.addEventListener("click", () => {
-        showingNow = !showingNow;
-        skyNow.setAttribute("visible", showingNow);
-        skyThen.setAttribute("visible", !showingNow);
+      btn.addEventListener("click", () => {
+        showingNow = !showingNow;
+        skyNow.setAttribute("visible", showingNow);
+        skyThen.setAttribute("visible", !showingNow);
 
-        btn.textContent = showingNow
-          ? "POKAŻ WERSJĘ HISTORYCZNĄ"
-          : "POKAŻ WERSJĘ WSPÓŁCZESNĄ";
-      });
-    </script>
-  </body>
+        btn.textContent = showingNow
+          ? "POKAŻ WERSJĘ HISTORYCZNĄ"
+          : "POKAŻ WERSJĘ WSPÓŁCZESNĄ";
+      });
+    </script>
+  </body>
 </html>
