@@ -108,7 +108,15 @@
   <a-sky id="sky-now" src="#now" rotation="0 -90 0" visible="true"></a-sky>
   <a-sky id="sky-then" src="#then" rotation="0 -90 0" visible="false"></a-sky>
 
-  <a-camera wasd-controls-enabled="false" look-controls="pointerLockEnabled: true"></a-camera>
+  <a-camera wasd-controls-enabled="false" look-controls>
+  <a-cursor 
+      fuse="true" 
+      fuse-timeout="500" 
+      color="white" 
+      geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02">
+  </a-cursor>
+</a-camera>
+
 
   <!-- 🔹 Hotspot -->
   <a-entity link="href: https://panorama360.glitch.me; title: My Homepage; image: #homeThumbnail">
@@ -152,6 +160,7 @@
     </script>
   </body>
 </html>
+
 
 
 
