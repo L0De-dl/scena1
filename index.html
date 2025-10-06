@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>Porównanie panoram</title>
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+
     <style>
       body {
         margin: 0;
@@ -13,6 +14,7 @@
         align-items: flex-start;
       }
 
+      /* 🔸 Przycisk zmiany panoramy */
       #switchBtn {
         position: absolute;
         top: 20px;
@@ -26,26 +28,47 @@
         cursor: pointer;
       }
 
+      /* 🔸 Informacja o sterowaniu */
       #infoText {
-  margin-top: 20px;
-  padding: 8px 12px;
-  background: white;
-  border: 5px solid black;
-  font-family: Arial, sans-serif; 
-  font-size: 16px;
-  font-weight: bold;
-  z-index: 10;
-  position: absolute; 
-}
+        margin-top: 20px;
+        padding: 8px 12px;
+        background: white;
+        border: 5px solid black;
+        font-family: Arial, sans-serif; 
+        font-size: 16px;
+        font-weight: bold;
+        z-index: 10;
+        position: absolute; 
+      }
 
+      /* 🔸 Ekran ładowania */
+      #loader {
+        position: fixed;
+        inset: 0;
+        background: black;
+        color: yellow;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 26px;
+        font-weight: bold;
+        z-index: 9999;
+        letter-spacing: 2px;
+      }
     </style>
   </head>
+
   <body>
+    <!-- 🔹 Ekran ładowania -->
+    <div id="loader">ŁADOWANIE PANORAMY...</div>
+
+    <!-- 🔹 Przycisk i tekst -->
     <button id="switchBtn">POKAŻ WERSJĘ HISTORYCZNĄ</button>
     <div id="infoText">ABY WYJŚĆ Z WIDOKU 360 NACIŚNIJ ESCAPE</div>
 
+    <!-- 🔹 Scena A-Frame -->
     <a-scene>
-      <a-assets>
+      <a-assets timeout="5000">
         <img id="now" src="panorama_now.jpg" />
         <img id="then" src="panorama_then.jpg" />
       </a-assets>
@@ -57,6 +80,13 @@
     </a-scene>
 
     <script>
+      // 🔸 Ukrycie ekranu ładowania po wczytaniu sceny
+      const scene = document.querySelector("a-scene");
+      scene.addEventListener("loaded", () => {
+        document.getElementById("loader").style.display = "none";
+      });
+
+      // 🔸 Przełączanie panoram
       const skyNow = document.getElementById("sky-now");
       const skyThen = document.getElementById("sky-then");
       const btn = document.getElementById("switchBtn");
@@ -67,7 +97,6 @@
         skyNow.setAttribute("visible", showingNow);
         skyThen.setAttribute("visible", !showingNow);
 
-        // ustawienie tekstu przycisku
         btn.textContent = showingNow
           ? "POKAŻ WERSJĘ HISTORYCZNĄ"
           : "POKAŻ WERSJĘ WSPÓŁCZESNĄ";
@@ -75,8 +104,3 @@
     </script>
   </body>
 </html>
-
-
-
-
-
