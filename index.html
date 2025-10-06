@@ -12,13 +12,15 @@
         display: flex;
         justify-content: center; 
         align-items: flex-start;
+        font-family: Arial, sans-serif;
       }
 
       /* 🔸 Przycisk zmiany panoramy */
       #switchBtn {
         position: absolute;
         top: 20px;
-        left: 20px;
+        left: 50%;
+        transform: translateX(-50%);
         z-index: 10;
         padding: 10px 20px;
         background: yellow;
@@ -28,17 +30,29 @@
         cursor: pointer;
       }
 
-      /* 🔸 Informacja o sterowaniu */
-      #infoText {
-        margin-top: 20px;
+      /* 🔸 Wspólny styl dla pól informacyjnych */
+      .infoBox {
+        position: absolute;
+        top: 20px;
+        z-index: 10;
         padding: 8px 12px;
         background: white;
         border: 5px solid black;
-        font-family: Arial, sans-serif; 
         font-size: 16px;
         font-weight: bold;
-        z-index: 10;
-        position: absolute; 
+        max-width: 320px;
+      }
+
+      /* 🔸 Informacja po lewej (źródło) */
+      #sourceInfo {
+        left: 20px;
+        text-align: left;
+      }
+
+      /* 🔸 Informacja po prawej (sterowanie) */
+      #controlInfo {
+        right: 20px;
+        text-align: right;
       }
 
       /* 🔸 Ekran ładowania */
@@ -55,6 +69,13 @@
         z-index: 9999;
         letter-spacing: 2px;
       }
+
+      /* 🔸 Płynne znikanie loadera */
+      #loader.fade-out {
+        opacity: 0;
+        transition: opacity 1s ease;
+        pointer-events: none;
+      }
     </style>
   </head>
 
@@ -62,9 +83,19 @@
     <!-- 🔹 Ekran ładowania -->
     <div id="loader">ŁADOWANIE PANORAMY...</div>
 
-    <!-- 🔹 Przycisk i tekst -->
+    <!-- 🔹 Elementy informacyjne -->
+    <div id="sourceInfo" class="infoBox">
+      ŹRÓDŁO ZDJĘCIA HISTORYCZNEGO:<br>
+      Archiwum Państwowe w Poznaniu
+    </div>
+
+    <div id="controlInfo" class="infoBox">
+      ABY WYJŚĆ Z WIDOKU 360<br>
+      NACIŚNIJ ESCAPE
+    </div>
+
+    <!-- 🔹 Przycisk w centrum -->
     <button id="switchBtn">POKAŻ WERSJĘ HISTORYCZNĄ</button>
-    <div id="infoText">ABY WYJŚĆ Z WIDOKU 360 NACIŚNIJ ESCAPE</div>
 
     <!-- 🔹 Scena A-Frame -->
     <a-scene>
@@ -80,10 +111,13 @@
     </a-scene>
 
     <script>
-      // 🔸 Ukrycie ekranu ładowania po wczytaniu sceny
+      // 🔸 Ukrycie ekranu ładowania po wczytaniu sceny (z animacją)
       const scene = document.querySelector("a-scene");
+      const loader = document.getElementById("loader");
+
       scene.addEventListener("loaded", () => {
-        document.getElementById("loader").style.display = "none";
+        loader.classList.add("fade-out");
+        setTimeout(() => loader.remove(), 1000);
       });
 
       // 🔸 Przełączanie panoram
