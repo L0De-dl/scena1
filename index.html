@@ -111,6 +111,18 @@
       <a-camera wasd-controls-enabled="false" look-controls="pointerLockEnabled: true"></a-camera>
     </a-scene>
 
+        <a-entity link="href: https://panorama360.glitch.me; title: My Homepage; image: #homeThumbnail">
+      <a-circle color="red" radius="1" position="-2.5 2 -5"
+                event-set__hide="_event: mouseenter; opacity: 0"
+                event-set__show="_event: mouseleave; opacity: 1"
+                event-set__enter="_event: mouseenter; _target: #Text4; visible: true"
+                event-set__leave="_event: mouseleave; _target: #Text4; visible: false"> 
+      <a-text id="Text4" value="Kliknij mnie" align="center" color="#FFF" visible="false" position="0 0.25 0.55"
+               material="color: #333"></a-text>
+      </a-circle>
+      </a-entity>
+
+    
     <script>
       // 🔸 Ukrycie ekranu ładowania po wczytaniu sceny (z animacją)
       const scene = document.querySelector("a-scene");
@@ -139,5 +151,6 @@
     </script>
   </body>
 </html>
+
 
 
