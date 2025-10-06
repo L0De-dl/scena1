@@ -21,7 +21,8 @@
         z-index: 10;
         padding: 10px 20px;
         background: yellow;
-        border: 5px solid black;
+        border: 3px solid black;
+        color: black;
         font-size: 16px;
         font-weight: bold;
         cursor: pointer;
@@ -98,7 +99,7 @@
     </div>
 
     <!-- 🔹 Przycisk zmiany panoramy -->
-    <button id="switchBtn">POKAŻ WERSJĘ HISTORYCZNĄ</button>
+    <button id="switchBtn">POKAŻ WERSJĘ WSPÓŁCZESNĄ</button>
 
     <!-- 🔹 Przycisk POWRÓT -->
     <button id="backBtn">POWRÓT</button>
@@ -110,8 +111,9 @@
         <img id="then" src="panorama_then.jpg" />
       </a-assets>
 
-      <a-sky id="sky-now" src="#now" rotation="0 -90 0" visible="true"></a-sky>
-      <a-sky id="sky-then" src="#then" rotation="0 -90 0" visible="false"></a-sky>
+      <!-- Start: panorama historyczna widoczna -->
+      <a-sky id="sky-now" src="#now" rotation="0 -90 0" visible="false"></a-sky>
+      <a-sky id="sky-then" src="#then" rotation="0 -90 0" visible="true"></a-sky>
 
       <a-entity camera look-controls>
         <a-entity 
@@ -138,7 +140,7 @@
       const skyThen = document.getElementById("sky-then");
       const switchBtn = document.getElementById("switchBtn");
 
-      let showingNow = true; // startujemy od współczesnej panoramy
+      let showingNow = false; // startujemy od panoramy historycznej
 
       skyNow.setAttribute("visible", showingNow);
       skyThen.setAttribute("visible", !showingNow);
