@@ -110,14 +110,18 @@
 
 
   <!-- 🔹 Hotspot -->
-<a-circle id="hotspot1" color="red" radius="1" position="-2.5 0 -5"
-          event-set__enter="_event: mouseenter; _target: #Text3; visible: true"
-          event-set__leave="_event: mouseleave; _target: #Text3; visible: false">
-</a-circle>
+<a-entity position="-2.5 0 -5">
+  <!-- 🔸 Hotspot -->
+  <a-circle color="red" radius="1"
+            event-set__enter="_event: mouseenter; _target: #Text3; visible: true"
+            event-set__leave="_event: mouseleave; _target: #Text3; visible: false">
+  </a-circle>
 
-<a-text id="Text3" value="RzWiR" align="center" color="#FFF" visible="false" 
-        position="-2.5 1 -5" material="color: #333">
-</a-text>
+  <!-- 🔸 Tekst, który pokazuje się nad hotspotem -->
+  <a-text id="Text3" value="RzWiR" align="center" color="#FFF" visible="false"
+          position="0 1 0" material="color: #333">
+  </a-text>
+</a-entity>
 
 </a-scene>
 
@@ -150,6 +154,7 @@
     </script>
   </body>
 </html>
+
 
 
 
