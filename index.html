@@ -34,30 +34,30 @@
         text-align: left;
       }
 
-      /* 🔸 Przycisk powrotu (mniejszy) */
-      #backBtn {
-        position: absolute;
-        top: 120px;
-        left: 20px;
-        z-index: 10;
-        padding: 6px 12px;
-        background: white;
-        border: 5px solid black;
-        font-size: 14px;
-        font-weight: bold;
-        cursor: pointer;
-      }
-
       /* 🔸 Przycisk zmiany panoramy */
       #switchBtn {
         position: absolute;
-        top: 180px;
+        top: 120px;
         left: 20px;
         z-index: 10;
         padding: 8px 16px;
         background: yellow;
         border: 5px solid black;
         font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      /* 🔸 Przycisk powrotu (pod spodem, mniejszy) */
+      #backBtn {
+        position: absolute;
+        top: 180px;
+        left: 20px;
+        z-index: 10;
+        padding: 6px 12px;
+        background: white;
+        border: 5px solid black;
+        font-size: 14px;
         font-weight: bold;
         cursor: pointer;
       }
@@ -100,7 +100,7 @@
     <!-- 🔹 Przycisk zmiany panoramy -->
     <button id="switchBtn">POKAŻ WERSJĘ HISTORYCZNĄ</button>
     
-    <!-- 🔹 Przycisk powrotu -->
+    <!-- 🔹 Przycisk powrotu (niżej) -->
     <button id="backBtn" onclick="window.location.href='https://l0de-dl.github.io/geoportal-historyczny'">
       POWRÓT
     </button>
@@ -161,4 +161,3 @@
     </script>
   </body>
 </html>
-
