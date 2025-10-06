@@ -76,19 +76,23 @@
   </head>
 
   <body>
-        <div id="loader">ŁADOWANIE PANORAMY...</div>
+    <!-- 🔹 Ekran ładowania -->
+    <div id="loader">ŁADOWANIE PANORAMY...</div>
 
-        <div id="sourceInfo" class="infoBox">
+    <!-- 🔹 Elementy informacyjne -->
+    <div id="sourceInfo" class="infoBox">
       ŹRÓDŁO ZDJĘCIA HISTORYCZNEGO:<br>
       ---<br>
       fotopolska.eu
     </div>
 
-        <button id="switchBtn">POKAŻ WERSJĘ HISTORYCZNĄ</button>
+    <!-- 🔹 Przycisk w centrum -->
+    <button id="switchBtn">POKAŻ WERSJĘ HISTORYCZNĄ</button>
 
-    <a-scene raycaster="objects: .raycasterable" cursor="rayOrigin: mouse">
+    <!-- 🔹 Scena A-Frame -->
+<a-scene>
   <a-assets timeout="5000">
-        <img id="now" src="panorama_now.jpg" />
+    <img id="now" src="panorama_now.jpg" />
     <img id="then" src="panorama_then.jpg" />
   </a-assets>
 
@@ -96,20 +100,9 @@
   <a-sky id="sky-then" src="#then" rotation="0 -90 0" visible="false"></a-sky>
 
 <a-camera wasd-controls-enabled="false" look-controls>
-    <a-entity cursor="fuse: false; color: white; geometry: primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"></a-entity>
+  <a-cursor fuse="false" color="white" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"></a-cursor>
 </a-camera>
 
-
-  <a-entity position="-2.5 0 -5">
-  <a-circle color="red" radius="1" class="raycasterable"
-            event-set__enter="_event: mouseenter; _target: #Text3; visible: true"
-            event-set__leave="_event: mouseleave; _target: #Text3; visible: false">
-  </a-circle>
-
-  <a-text id="Text3" value="RzWiR" align="center" color="#FFF" visible="false"
-          position="0 1 0" material="color: #333">
-  </a-text>
-</a-entity>
 
 </a-scene>
 
