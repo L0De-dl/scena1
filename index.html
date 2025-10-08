@@ -116,19 +116,18 @@
       <a-sky id="sky-now" src="#now" rotation="0 -90 0" visible="true"></a-sky>
       <a-sky id="sky-then" src="#then" rotation="0 -90 0" visible="false">
   <a-plane 
-    id="hotspot" 
+    id="hotspot-then" 
     src="#hotspot-image" 
     width="1" 
     height="1" 
     position="0 1.5 -3"
     material="shader: flat"
-    event-set__enter="_event: mouseenter; _target: #tooltip; visible: true"
-    event-set__leave="_event: mouseleave; _target: #tooltip; visible: false"
+    event-set__enter="_event: mouseenter; _target: #tooltip-then; visible: true"
+    event-set__leave="_event: mouseleave; _target: #tooltip-then; visible: false"
   ></a-plane>
 
-  <!-- Tooltip - prostokąt z tekstem, domyślnie niewidoczny -->
   <a-plane 
-    id="tooltip" 
+    id="tooltip-then" 
     width="2" 
     height="0.5" 
     color="#333" 
@@ -136,10 +135,11 @@
     position="0 2.5 -3"
     visible="false">
     <a-text 
-      value="Tutaj Twój tekst" 
+      value="Tutaj Twój tekst historyczny" 
       align="center" 
       color="#fff" 
-      position="0 0 0.01" 
+      position="0 0 0.01"
+      font="custom-msdf.json"
       width="1.8">
     </a-text>
   </a-plane>
@@ -193,6 +193,7 @@
     </script>
   </body>
 </html>
+
 
 
 
