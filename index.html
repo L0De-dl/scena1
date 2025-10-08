@@ -114,16 +114,7 @@
       </a-assets>
 
       <a-sky id="sky-now" src="#now" rotation="0 -90 0" visible="true"></a-sky>
-      <a-sky id="sky-then" src="#then" rotation="0 -90 0" visible="false"></a-sky>
-
-      <a-entity camera look-controls>
-        <a-entity cursor="fuse: true; fuseTimeout: 500"
-                  position="0 0 -1"
-                  geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-                  material="color: black; shader: flat">
-        </a-entity>
-      </a-entity>
-      
+      <a-sky id="sky-then" src="#then" rotation="0 -90 0" visible="false">
   <a-plane 
     id="hotspot" 
     src="#hotspot-image" 
@@ -153,8 +144,16 @@
     </a-text>
   </a-plane>
 
+        
+      </a-sky>
 
-      
+      <a-entity camera look-controls>
+        <a-entity cursor="fuse: true; fuseTimeout: 500"
+                  position="0 0 -1"
+                  geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                  material="color: black; shader: flat">
+        </a-entity>
+      </a-entity>
     </a-scene>
 
     <script>
@@ -194,6 +193,7 @@
     </script>
   </body>
 </html>
+
 
 
 
