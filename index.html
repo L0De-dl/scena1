@@ -123,19 +123,14 @@
         </a-entity>
       </a-entity>
       
-  <a-text value="Zażółć żółtą jaźń"
-          font="custom-msdf.json"
-          color="#33C3F0"
-          position="0 2 -3"
-          scale="2 2 2">
-  </a-text>
 
      <a-circle color="red" radius="1" position="0 0 -5"
                 event-set__enter="_event: mouseenter; _target: #Text2; visible: true"
-                event-set__leave="_event: mouseleave; _target: #Text2; visible: false"> 
+                event-set__leave="_event: mouseleave; _target: #Text2; visible: false"> </a-circle>
+      
       <a-text id="Text2" value="Test z polskimi znakami ąęńćóżźłńjuhfjsvsj" align="center" color="#FFF" visible="false" font="custom-msdf.json" position="0 0.25 0.55"
               geometry="primitive: plane; width: 1.75" material="color: #333"></a-text>
-      </a-circle>
+
       
     </a-scene>
 
@@ -176,6 +171,7 @@
     </script>
   </body>
 </html>
+
 
 
 
