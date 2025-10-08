@@ -110,6 +110,7 @@
       <a-assets timeout="5000">
         <img id="now" src="panorama_now.jpg" />
         <img id="then" src="panorama_then.jpg" />
+        <img id="hotspot-image" src="informacja.png">
       </a-assets>
 
       <a-sky id="sky-now" src="#now" rotation="0 -90 0" visible="true"></a-sky>
@@ -123,13 +124,35 @@
         </a-entity>
       </a-entity>
       
+  <a-plane 
+    id="hotspot" 
+    src="#hotspot-image" 
+    width="1" 
+    height="1" 
+    position="0 1.5 -3"
+    material="shader: flat"
+    event-set__enter="_event: mouseenter; _target: #tooltip; visible: true"
+    event-set__leave="_event: mouseleave; _target: #tooltip; visible: false"
+  ></a-plane>
 
-     <a-circle color="red" radius="1" position="0 0 -5"
-                event-set__enter="_event: mouseenter; _target: #Text2; visible: true"
-                event-set__leave="_event: mouseleave; _target: #Text2; visible: false"> </a-circle>
-      
-      <a-text id="Text2" value="Test z polskimi znakami ąęńćóżźłńjuhfjsvsj" align="center" color="#FFF" visible="false" font="custom-msdf.json" position="0 0.25 0.55"
-              geometry="primitive: plane; width: 1.75" material="color: #333"></a-text>
+  <!-- Tooltip - prostokąt z tekstem, domyślnie niewidoczny -->
+  <a-plane 
+    id="tooltip" 
+    width="2" 
+    height="0.5" 
+    color="#333" 
+    opacity="0.8" 
+    position="0 2.5 -3"
+    visible="false">
+    <a-text 
+      value="Tutaj Twój tekst" 
+      align="center" 
+      color="#fff" 
+      position="0 0 0.01" 
+      width="1.8">
+    </a-text>
+  </a-plane>
+
 
       
     </a-scene>
@@ -171,6 +194,7 @@
     </script>
   </body>
 </html>
+
 
 
 
