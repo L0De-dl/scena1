@@ -122,7 +122,7 @@
                   geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
                   material="color: black; shader: flat"
                   
-                  raycaster="objects: #hotspot; far: 5000"
+            raycaster="objects: .collidable; far: 50" >
         >
         </a-entity>
       </a-entity>
@@ -133,7 +133,7 @@
     width="1" 
     height="1" 
     position="0 1.5 -3"
-    material="shader: flat"
+    class="collidable"
     event-set__enter="_event: mouseenter; _target: #tooltip; visible: true"
     event-set__leave="_event: mouseleave; _target: #tooltip; visible: false"
   ></a-plane>
@@ -197,6 +197,7 @@
     </script>
   </body>
 </html>
+
 
 
 
