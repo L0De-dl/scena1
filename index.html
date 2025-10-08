@@ -2,7 +2,7 @@
 <html lang="pl">
   <head>
     <meta charset="utf-8">
-    <title>Porównanie panoram</title>
+    <title>Por贸wnanie panoram</title>
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
 
     <style>
@@ -15,7 +15,7 @@
         font-family: Arial, sans-serif;
       }
 
-      /* 🔸 Wspólny styl dla pól informacyjnych */
+      /* 馃敻 Wsp贸lny styl dla p贸l informacyjnych */
       .infoBox {
         position: absolute;
         left: 20px;
@@ -28,13 +28,13 @@
         max-width: 320px;
       }
 
-      /* 🔸 Informacja o źródle */
+      /* 馃敻 Informacja o 藕r贸dle */
       #sourceInfo {
         top: 20px;
         text-align: left;
       }
 
-      /* 🔸 Przycisk zmiany panoramy */
+      /* 馃敻 Przycisk zmiany panoramy */
       #switchBtn {
         position: absolute;
         top: 120px;
@@ -48,7 +48,7 @@
         cursor: pointer;
       }
 
-      /* 🔸 Przycisk powrotu (pod spodem, mniejszy) */
+      /* 馃敻 Przycisk powrotu (pod spodem, mniejszy) */
       #backBtn {
         position: absolute;
         top: 180px;
@@ -62,7 +62,7 @@
         cursor: pointer;
       }
 
-      /* 🔸 Ekran ładowania */
+      /* 馃敻 Ekran 艂adowania */
       #loader {
         position: fixed;
         inset: 0;
@@ -77,7 +77,7 @@
         letter-spacing: 2px;
       }
 
-      /* 🔸 Płynne znikanie loadera */
+      /* 馃敻 P艂ynne znikanie loadera */
       #loader.fade-out {
         opacity: 0;
         transition: opacity 1s ease;
@@ -87,25 +87,25 @@
   </head>
 
   <body>
-    <!-- 🔹 Ekran ładowania -->
-    <div id="loader">ŁADOWANIE PANORAMY...</div>
+    <!-- 馃敼 Ekran 艂adowania -->
+    <div id="loader">艁ADOWANIE PANORAMY...</div>
 
-    <!-- 🔹 Informacja o źródle -->
+    <!-- 馃敼 Informacja o 藕r贸dle -->
     <div id="sourceInfo" class="infoBox">
-      ŹRÓDŁO ZDJĘCIA HISTORYCZNEGO:<br>
+      殴R脫D艁O ZDJ臉CIA HISTORYCZNEGO:<br>
       ---<br>
       fotopolska.eu
     </div>
 
-    <!-- 🔹 Przycisk zmiany panoramy -->
-    <button id="switchBtn">POKAŻ WERSJĘ HISTORYCZNĄ</button>
+    <!-- 馃敼 Przycisk zmiany panoramy -->
+    <button id="switchBtn">POKA呕 WERSJ臉 HISTORYCZN膭</button>
     
-    <!-- 🔹 Przycisk powrotu (niżej) -->
+    <!-- 馃敼 Przycisk powrotu (ni偶ej) -->
     <button id="backBtn" onclick="window.location.href='https://l0de-dl.github.io/geoportal-historyczny'">
-      POWRÓT
+      POWR脫T
     </button>
 
-    <!-- 🔹 Scena A-Frame -->
+    <!-- 馃敼 Scena A-Frame -->
     <a-scene>
       <a-assets timeout="5000">
         <img id="now" src="panorama_now.jpg" />
@@ -114,38 +114,7 @@
       </a-assets>
 
       <a-sky id="sky-now" src="#now" rotation="0 -90 0" visible="true"></a-sky>
-      <a-sky id="sky-then" src="#then" rotation="0 -90 0" visible="false">
-  <a-plane 
-    id="hotspot-then" 
-    src="#hotspot-image" 
-    width="1" 
-    height="1" 
-    position="0 1.5 -3"
-    material="shader: flat"
-    event-set__enter="_event: mouseenter; _target: #tooltip-then; visible: true"
-    event-set__leave="_event: mouseleave; _target: #tooltip-then; visible: false"
-  ></a-plane>
-
-  <a-plane 
-    id="tooltip-then" 
-    width="2" 
-    height="0.5" 
-    color="#333" 
-    opacity="0.8" 
-    position="0 2.5 -3"
-    visible="false">
-    <a-text 
-      value="Tutaj Twój tekst historyczny" 
-      align="center" 
-      color="#fff" 
-      position="0 0 0.01"
-      font="custom-msdf.json"
-      width="1.8">
-    </a-text>
-  </a-plane>
-
-        
-      </a-sky>
+      <a-sky id="sky-then" src="#then" rotation="0 -90 0" visible="false"></a-sky>
 
       <a-entity camera look-controls>
         <a-entity cursor="fuse: true; fuseTimeout: 500"
@@ -154,10 +123,42 @@
                   material="color: black; shader: flat">
         </a-entity>
       </a-entity>
+      
+  <a-plane 
+    id="hotspot" 
+    src="#hotspot-image" 
+    width="1" 
+    height="1" 
+    position="0 1.5 -3"
+    material="shader: flat"
+    event-set__enter="_event: mouseenter; _target: #tooltip; visible: true"
+    event-set__leave="_event: mouseleave; _target: #tooltip; visible: false"
+  ></a-plane>
+
+  <!-- Tooltip - prostok膮t z tekstem, domy艣lnie niewidoczny -->
+  <a-plane 
+    id="tooltip" 
+    width="2" 
+    height="0.5" 
+    color="#333" 
+    opacity="0.8" 
+    position="0 2.5 -3"
+    visible="false">
+    <a-text 
+      value="Tutaj Tw贸j tekst" 
+      align="center" 
+      color="#fff" 
+      position="0 0 0.01" 
+      width="1.8">
+    </a-text>
+  </a-plane>
+
+
+      
     </a-scene>
 
     <script>
-      // 🔸 Ukrycie ekranu ładowania po wczytaniu sceny
+      // 馃敻 Ukrycie ekranu 艂adowania po wczytaniu sceny
       const scene = document.querySelector("a-scene");
       const loader = document.getElementById("loader");
 
@@ -166,7 +167,7 @@
         setTimeout(() => loader.remove(), 1000);
       });
 
-      // 🔸 Przełączanie panoram
+      // 馃敻 Prze艂膮czanie panoram
       const skyNow = document.getElementById("sky-now");
       const skyThen = document.getElementById("sky-then");
       const btn = document.getElementById("switchBtn");
@@ -178,8 +179,8 @@
       skyThen.setAttribute("visible", !showingNow);  // true
 
       btn.textContent = showingNow
-        ? "POKAŻ WERSJĘ HISTORYCZNĄ"
-        : "POKAŻ WERSJĘ WSPÓŁCZESNĄ";
+        ? "POKA呕 WERSJ臉 HISTORYCZN膭"
+        : "POKA呕 WERSJ臉 WSP脫艁CZESN膭";
 
       btn.addEventListener("click", () => {
         showingNow = !showingNow;
@@ -187,14 +188,12 @@
         skyThen.setAttribute("visible", !showingNow);
 
         btn.textContent = showingNow
-          ? "POKAŻ WERSJĘ HISTORYCZNĄ"
-          : "POKAŻ WERSJĘ WSPÓŁCZESNĄ";
+          ? "POKA呕 WERSJ臉 HISTORYCZN膭"
+          : "POKA呕 WERSJ臉 WSP脫艁CZESN膭";
       });
     </script>
   </body>
 </html>
-
-
 
 
 
