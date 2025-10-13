@@ -118,42 +118,13 @@
 
 <a-camera><a-cursor></a-cursor></a-camera>
       
-<a-plane 
-  id="tooltip" 
-  width="20" 
-  height="5" 
-  color="#333" 
-  opacity="0.8"
-  position="3.312 1.370 4.964"
-  rotation="0 -143.614 0"
-  visible="false"
-  side="double">
-  
-  <a-text
-    value="Tutaj tekst z polskimi znakami ĄĘÓŁ"
-    font="Roboto-msdf.json"
-    font-image="Roboto.png"
-    negate="false"
-    align="center"
-    color="#ffffff"
-    width="18"
-    side="double">
-  </a-text>
-</a-plane>
-
-<a-plane 
-  id="hotspot" 
-  src="#hotspot-image" 
-  width="1" 
-  height="1" 
-  position="3.598 1.370 4.965"
-  rotation="0 -143.614 0"
-  class="collidable"
-  event-set__enter="_event: mouseenter; _target: #tooltip; visible: true"
-  event-set__leave="_event: mouseleave; _target: #tooltip; visible: false">
-</a-plane>
-
-
+      <!—Koło z tekstem -->
+      <a-plane src="#hotspot-image" position="0 0 -5"
+                event-set__enter="_event: mouseenter; _target: #Text200; visible: true"
+                event-set__leave="_event: mouseleave; _target: #Text200; visible: false"> 
+      <a-text id="Text200" value="Ą test ńka z żź" font="Roboto-msdf.json" font-image="Roboto.png" align="center" color="#FFF" visible="false" position="0 0.25 0.55"
+              geometry="primitive: plane; width: 1.75" material="color: #333"></a-text>
+      </a-plane>
 
       
     </a-scene>
@@ -195,6 +166,7 @@
     </script>
   </body>
 </html>
+
 
 
 
