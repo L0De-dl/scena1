@@ -118,40 +118,42 @@
 
 <a-camera><a-cursor></a-cursor></a-camera>
       
-  <a-plane 
-    id="hotspot" 
-    src="#hotspot-image" 
-    width="1" 
-    height="1" 
-    position="3.598 1.370 4.965"
-    rotation="0 -143.614 0"
-    class="collidable"
-    event-set__enter="_event: mouseenter; _target: #tooltip; visible: true"
-    event-set__leave="_event: mouseleave; _target: #tooltip; visible: false"
-  ></a-plane>
-
-  <!-- Tooltip - prostokąt z tekstem, domyślnie niewidoczny -->
-  <a-plane 
-    id="tooltip" 
-    width="2" 
-    height="0.5" 
-    color="#333" 
-    opacity="0.8" 
-    position="3.312 1.370 4.966"
-    rotation="0 -143.614 0"
-    visible="false"
-    side="double">
-<a-text
-  value="Tutaj tekst z polskimi znakami ĄĘÓŁ"
-  font="Roboto-msdf.json"
-  font-image="Roboto.png"
-  negate="false"
-  align="center"
-  color="#ffffff"
-  width="1.8"
+<a-plane 
+  id="tooltip" 
+  width="2" 
+  height="0.5" 
+  color="#333" 
+  opacity="0.8"
+  position="3.312 1.370 4.964"
+  rotation="0 -143.614 0"
+  visible="false"
   side="double">
-</a-text>
-  </a-plane>
+  
+  <a-text
+    value="Tutaj tekst z polskimi znakami ĄĘÓŁ"
+    font="Roboto-msdf.json"
+    font-image="Roboto.png"
+    negate="false"
+    align="center"
+    color="#ffffff"
+    width="1.8"
+    side="double">
+  </a-text>
+</a-plane>
+
+<a-plane 
+  id="hotspot" 
+  src="#hotspot-image" 
+  width="1" 
+  height="1" 
+  position="3.598 1.370 4.965"
+  rotation="0 -143.614 0"
+  class="collidable"
+  transparent="true"
+  event-set__enter="_event: mouseenter; _target: #tooltip; visible: true"
+  event-set__leave="_event: mouseleave; _target: #tooltip; visible: false">
+</a-plane>
+
 
 
       
@@ -194,6 +196,7 @@
     </script>
   </body>
 </html>
+
 
 
 
