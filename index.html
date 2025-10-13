@@ -111,8 +111,6 @@
         <img id="now" src="panorama_now.jpg" />
         <img id="then" src="panorama_then.jpg" />
         <img id="hotspot-image" src="informacja.png">
-        <a-asset-item id="myfont-json" src="custom-msdf.json"></a-asset-item>
-        <img id="myfont-img" src="custom-msdf.png">
       </a-assets>
 
       <a-sky id="sky-now" src="#now" rotation="0 -90 0" visible="true"></a-sky>
@@ -142,9 +140,8 @@
     visible="false">
 <a-text
   value="Tutaj tekst z polskimi znakami ĄĘÓŁ"
-  font="#myfont-json"
-  shader="msdf"
-  transparent="true"
+  font="custom-msdf.json"
+  fontImage="custom-msdf.png"
   negate="false"
   align="center"
   color="#ffffff"
@@ -194,6 +191,7 @@
     </script>
   </body>
 </html>
+
 
 
 
