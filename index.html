@@ -112,6 +112,7 @@
         <img id="then" src="panorama_then.jpg" />
         <img id="hotspot-image" src="informacja.png">
         <img id="hotspot-image2" src="lupa.png">
+        <img id="hotspot-image3" src="dzwiek.png">
       </a-assets>
 
       <a-sky id="sky-now" src="#now" rotation="0 -90 0" visible="true"></a-sky>
@@ -119,7 +120,7 @@
 
 <a-camera><a-cursor></a-cursor></a-camera>
       
-      <a-plane src="#hotspot-image" position="0 0 -5" transparent="true"
+      <a-plane src="#hotspot-image3" position="0 0 -5" transparent="true"
                 event-set__enter="_event: mouseenter; _target: #Text200; visible: true"
                 event-set__leave="_event: mouseleave; _target: #Text200; visible: false"> 
       <a-text id="Text200" value="Scena nr 1 - 'Wędrujące drzewa'" font="Roboto1-msdf.json" font-image="Roboto1-msdf.png" negate="false" align="center" color="#FFF" visible="false" position="0 0.25 0.55"
@@ -181,6 +182,7 @@
     </script>
   </body>
 </html>
+
 
 
 
