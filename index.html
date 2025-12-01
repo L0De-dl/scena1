@@ -83,23 +83,6 @@
         transition: opacity 1s ease;
         pointer-events: none;
       }
-      
-      /* 🆕 Informacja w lewym dolnym rogu (dyskretna) */
-      #bottomLeftText {
-        position: absolute;
-        bottom: 10px; /* Odległość od dolnej krawędzi */
-        left: 10px;  /* Odległość od lewej krawędzi */
-        z-index: 10;
-        padding: 4px 8px; /* Mniejszy padding */
-        background: rgba(255, 255, 255, 0.3); /* Bardzo jasne, przezroczyste tło */
-        border: 1px solid rgba(0, 0, 0, 0.2); /* Cienka, przezroczysta ramka */
-        font-size: 10px; /* Bardzo mała czcionka */
-        color: black;
-        font-weight: normal; 
-        max-width: 200px;
-        pointer-events: none; /* Ignorowanie kliknięć */
-        text-align: left;
-      }
     </style>
   </head>
 
@@ -117,10 +100,6 @@
     <button id="backBtn" onclick="window.location.href='https://l0de-dl.github.io/geoportal-historyczny'">
       POWRÓT DO MAPY
     </button>
-    
-    <div id="bottomLeftText">
-      Prezentacja stworzona przy użyciu A-Frame.
-    </div>
 
     <a-scene>
       <a-assets timeout="5000">
